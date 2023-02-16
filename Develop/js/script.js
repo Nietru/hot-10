@@ -53,19 +53,17 @@ function renderArtists() {
   }
 }
 // Listens for form submit, fetches current artist URL
-row1.addEventListener("submit", function (event) {
+listArtist.addEventListener("submit", function (event) {
   event.preventDefault();
   // Clears any existing artist
   artist.innerHTML = "";
 });
 
 // Regenerates the statistics for the artist name the user clicks on
-listArtist.addEventListener("click", function (event) {
-  var element = event.target;
-  if (element.matches(".list-button")) {
+row1.addEventListener("click", function (event) {
+  if (event.target.listArtist === "Button") {
     listArtist.innerHTML = "";
-    searchBox.value = element.textContent;
-    console.log(searchBox.value);
+    console.log(event.target.innerText);
   }
 });
 // Running the re-render if the artists array in local storage has contents
