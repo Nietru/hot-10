@@ -1,0 +1,76 @@
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    background-image: url("/img/background1.jpg");
+    background-position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header {
+    display: block;
+    text-align: center;
+}
+.search-title {
+    color: rgb(5, 131, 249);
+    font-size: 50px;
+    text-decoration: underline;
+}
+
+#search-input {
+    font-size: xx-large;
+    background-color: rgb(16, 12, 2);
+    color: white;
+    border-radius: 5px;
+    border: 5px solid white;
+}
+
+#search,
+#clearhist {
+    background-color: red;
+    font-size: larger;
+    font-weight: bold;
+    color: rgb(238, 245, 238);
+    border: 2px solid rgb(11, 203, 251);
+    border-radius: 5px;
+    padding: .5%;
+    margin: 2%;
+}
+
+main {
+    display: block;
+    color: white;
+
+}
+
+#results-left {
+    float: left;
+}
+
+#results-right {
+    float: right;
+}
+
+#results-left,
+#results-right {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    height: auto;
+}
+
+/* to hide history item slot until user has that many history searches */
+.hist-item {
+
+}
+
+.history-title {
+    color:rgb(238, 245, 238);
+}
+
