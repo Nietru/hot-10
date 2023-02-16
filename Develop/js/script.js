@@ -11,23 +11,21 @@ var artistsArray = [];
 
 var artistName = searchBox.value;
 
+function addToHistory() {
+  // Pushing searchbox value to artists array, then storing array in localStorage
+  artists.push(searchBox.value);
+  localStorage.setItem("Artists", JSON.stringify(artistsArray));
+}
+
 // Lists entered artists
 function list() {
   var listArtist = document.createElement("button");
   listArtist.textContent = searchBox.value;
-  // Pushing searchbox value to artists array, then storing array in localStorage
-  artists.push(searchBox.value);
   console.log(listArtist);
-  localStorage.setItem("Artists", JSON.stringify(artistsArray));
   // Checking to see if the div and ul elements already exist, then appending them
-  if (!row1.children[1]) {
-    artistList.setAttribute(
-      "style",
-      "list-style: none; padding-left: 0; margin-top: 1rem;"
-    );
-    row1.appendChild(artistListContainer);
-    artistListContainer.appendChild(artistList);
-  }
+  row1.appendChild(artistListContainer);
+  artistListContainer.appendChild(artistList);
+
   // Sets classes for list item, then appends it to the ul
   listArtist.setAttribute(
     "class",
@@ -44,19 +42,18 @@ function renderArtists() {
   // Create div and ul if they don't exist
   searchBox.appendChild(artistListContainer);
   artistListContainer.appendChild(artistList);
+  for (var i = 0; i < artistsArray.length; i++) {
+    // Creates button
+    var listArtist = document.createElement("button");
+    // Sets classes for button, then appends it to the ul
+    listArtist.setAttribute("class", "list-button");
+    listArtist.textContent = artistsArray[i];
+    artistList.appendChild(listArtist);
+    console.log(artistsArray);
+  }
 }
-for (var i = 0; i < artistsArray.length; i++) {
-  // Creates button
-  var listArtist = document.createElement("button");
-  // Sets classes for button, then appends it to the ul
-  listArtist.setAttribute("class", "list-button");
-  listArtist.textContent = artistsArray[i];
-  artistList.appendChild(listArtist);
-  console.log(artistsArray);
-}
-
 // Listens for form submit, fetches current artist URL
-formJs.addEventListener("submit", function (event) {
+row1.addEventListener("submit", function (event) {
   event.preventDefault();
   // Clears any existing artist
   artist.innerHTML = "";
