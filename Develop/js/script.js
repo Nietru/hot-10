@@ -15,7 +15,7 @@ function addToHistory() {
   // Pushing searchbox value to artists array, then storing array in localStorage
   userInput.push(searchBox.value);
   artistsArray.append(artistName);
-  localStorage.setItem("Button", JSON.stringify(artistsArray));
+  localStorage.setItem("savedArtists", JSON.stringify(artistsArray));
 }
 
 // Lists entered artists
