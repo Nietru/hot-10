@@ -1,37 +1,25 @@
 var searchBox = document.querySelector("#search-box");
-// const form = document.getElementById('search-form');  //already declared in lastfm.js
+var searchForm = document.getElementById("search-form");
 var searchBtn = document.querySelector("#search");
 var artistListContainer = document.createElement("div");
-var userInput = document.querySelector("#search-input");
+var userInput = document.getElementById("search-input");
+var typedArtist = "";
+console.log(typedArtist);
+console.log(searchForm);
 var searchList = document.createElement("ul");
 // var artistList = document.createElement("li");
-var row1 = document.querySelector("#row1");
+var recentSearchItems = document.querySelector("#recent-search-items");
 
 var artistsArray = [];
 
-var artistName = searchBox.value;
+var artistName = userInput.value;
 
-function addToHistory() {
+function addToHistory(name) {
   // Pushing searchbox value to artists array, then storing array in localStorage
-  userInput.push(searchBox.value);
-  artistsArray.append(artistName);
+  // NEED TO ADD LOGIC, FOR ADDING ONLY TEN TO THE ARRAY VIA POP()
+  artistsArray.push(name);
+  console.log("this is artist name: " + name);
   localStorage.setItem("savedArtists", JSON.stringify(artistsArray));
-}
-
-// Lists entered artists
-function list() {
-  var listArtist = document.createElement("Button");
-  listArtist.textContent = searchBox.value;
-  console.log(listArtist);
-  // putting a container for the ul in the row1 div in the html
-  row1.appendChild(artistListContainer);
-  // searchList, aka the ul, inside the container inside the row1 div
-  artistListContainer.appendChild(searchList);
-
-  // append listArtist list item buttons to the searchList ul
-  searchList.appendChild(listArtist);
-  // Clears search term
-  searchBox.value = "";
 }
 
 function renderArtists() {
@@ -40,24 +28,31 @@ function renderArtists() {
     localStorage.getItem("savedArtists", artistsArray)
   );
   for (var i = 0; i < artistsArray.length; i++) {
+    var listArtist = document.createElement("a");
+    listArtist.innerHTML = artistsArray[i];
+    listArtist.href = "www.google.com";
+    console.log(listArtist);
+    // putting a container for the ul in the row1 div in the html
+    recentSearchItems.appendChild(listArtist);
     // adding userinput to the array
-    listArtist.textContent = artistsArray[i];
-    // appending button to the user's search input
-    userInput.appendChild(listArtist);
-    console.log(artistsArray);
+    // ADD A CLEAR FUNCTION INSIDE REDERARTISTS (SEE SHOPPING CART EXAMPLE)
   }
 }
 // Listens for form submit, fetches current artist URL
-searchBtn.addEventListener("submit", function (event) {
+searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
+  typedArtist = searchForm.elements["search-input"].value;
+  console.log(typedArtist);
+  //run the function to push to local storage
+  addToHistory(typedArtist);
+  renderArtists();
   // Clears any existing artist
-  listArtist.innerHTML = "";
+  userInput.value = "";
 });
 
 // Regenerates the statistics for the artist name the user clicks on
-row1.addEventListener("click", function (event) {
-  if (event.target.listArtist === "Button") {
-    listArtist.innerHTML = "";
+recentSearchItems.addEventListener("click", function (event) {
+  if (event.target.listArtist === "a") {
     console.log(event.target.innerText);
   }
 });
