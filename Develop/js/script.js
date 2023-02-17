@@ -1,9 +1,8 @@
 var searchBox = document.querySelector("#search-box");
 var searchForm = document.getElementById("search-form");
 var searchBtn = document.querySelector("#search");
-var artistListContainer = document.createElement("div");
 var userInput = document.getElementById("search-input");
-var typedArtist = "";
+var clearhistBtn = document.getElementById("#clearhist");
 console.log(typedArtist);
 console.log(searchForm);
 var searchList = document.createElement("ul");
@@ -11,12 +10,11 @@ var searchList = document.createElement("ul");
 var recentSearchItems = document.querySelector("#recent-search-items");
 
 var artistsArray = [];
-
-var artistName = userInput.value;
+var typedArtist = "";
 
 function addToHistory(name) {
   // Pushing searchbox value to artists array, then storing array in localStorage
-  // NEED TO ADD LOGIC, FOR ADDING ONLY TEN TO THE ARRAY VIA POP()
+  // NEED TO ADD LOGIC, FOR ADDING ONLY 5 TO THE ARRAY VIA POP()
   artistsArray.push(name);
   console.log("this is artist name: " + name);
   localStorage.setItem("savedArtists", JSON.stringify(artistsArray));
@@ -34,8 +32,6 @@ function renderArtists() {
     console.log(listArtist);
     // putting a container for the ul in the row1 div in the html
     recentSearchItems.appendChild(listArtist);
-    // adding userinput to the array
-    // ADD A CLEAR FUNCTION INSIDE REDERARTISTS (SEE SHOPPING CART EXAMPLE)
   }
 }
 // Listens for form submit, fetches current artist URL
@@ -56,9 +52,13 @@ recentSearchItems.addEventListener("click", function (event) {
     console.log(event.target.innerText);
   }
 });
+
+//  WHY DOESNT THIS WORK?!
+clearhistBtn.addEventListener("click", window.localStorage.clear());
+
 // Running the re-render if the artists array in local storage has contents
 if (JSON.parse(localStorage.getItem("savedArtists", artistsArray)) !== null) {
   renderArtists();
 } else {
-  // reload();
+  // clearhistBtn.onclick.addEventListener("reset", myScript);
 }
