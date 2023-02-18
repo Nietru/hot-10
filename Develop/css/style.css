@@ -41,6 +41,7 @@ header {
     border-radius: 5px;
     padding: .5%;
     margin: 2%;
+    cursor: pointer;
 }
 
 main {
@@ -57,11 +58,20 @@ main {
     float: right;
 }
 
-.hist-item {
+#search-box {
+    color: white;
+    font-weight: bold;
+    font-size: larger;
 }
 
-.history-title {
-    color:rgb(238, 245, 238);
+#recent-search-items, a {
+    margin: 5px;
+    padding: 5px;
+    color: red;
+    text-decoration: underline;
+    font-style: italic;
+    font-size: larger;
+    cursor: pointer;
 }
 
 .gridContainer{
@@ -76,7 +86,6 @@ main {
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
-
 }
 
 
