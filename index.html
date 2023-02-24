@@ -1,141 +1,220 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./Develop/css/style.css" />
-    <title>
-      Hot 10! | Search Favorite Artists | Get Amazing Live Performances
-    </title>
-  </head>
+<!doctype html>
+<html amp lang="en">
 
-  <body>
-    <!-- Header/search engine spot -->
-    <header id="header" class="header">
-      <div class="search-container">
-        <h1 class="search-title">HOT 10! Search for the Best!</h1>
-        <form id="search-form" class="search-form">
-          <input
-            id="search-input"
-            class="form-input"
-            type="text"
-            placeholder="Search!"
-          />
-          <button id="search" class="btn btn-info btn-block">Search!</button>
-        </form>
+<head>
+  <meta charset="utf-8">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <title>Hot 10! | Search Favorite Artists | Get Amazing Live Performances</title>
+  <link rel="canonical" href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup/">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>
+  <script async custom-element="amp-bodymovin-animation" src="https://cdn.ampproject.org/v0/amp-bodymovin-animation-0.1.js"></script>
+  <style amp-boilerplate>
+ <noscript><style amp-boilerplate>
+  
+body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+/* CSS STYLING INLINE: */
+.subheader {
+  font-size: 1.75em;
+  font-family: sans; color: white;
+  text-shadow: 2px 2px 4px black, 0 0 1em black, 0 0 0.2em black;
+  padding-left: 2em;
+}
+
+  #recent-search-items, a {
+  margin: 5px;
+  padding: 5px;
+  color: red;
+  text-decoration: underline;
+  font-style: italic;
+  font-size: 20pt;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px black, 0 0 1em rgb(227, 167, 4), 0 0 0.2em rgb(255, 255, 255);
+}
+#recent-search-items:hover, a:hover {
+  text-shadow: 2px 2px 4px rgb(255, 255, 255), 0 0 1em rgb(255, 255, 255), 0 0 0.2em rgb(5, 131, 249);
+}
+
+*::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background-position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  display: block;
+  text-align: center;
+}
+
+.search-title {
+  color: rgb(5, 131, 249);
+  font-size: 50px;
+  text-decoration: underline;
+}
+
+#search-input {
+  font-size: xx-large;
+  background-color: rgb(16, 12, 2);
+  color: white;
+  border-radius: 5px;
+  border: 5px solid white;
+}
+
+#search-input:hover {
+  border: 5px solid rgb(5, 131, 249);
+}
+
+#search,
+#clearhist {
+  background-color: red;
+  font-size: larger;
+  font-weight: bold;
+  color: rgb(238, 245, 238);
+  border: 3px solid transparent;
+  border-radius: 5px;
+  padding: .5%;
+  margin: 2%;
+}
+
+#search:hover, #clearhist:hover {
+  cursor: pointer;
+  border: rgb(5, 131, 249) solid 3px;
+  text-shadow: 2px 2px 4px black, 0 0 1em black, 0 0 0.2em black;
+}
+
+main {
+  display: flex;
+  flex-basis: auto;
+  color: white;
+}
+
+#results-left {
+  float: left;
+}
+
+#results-right {
+  float: right;
+}
+
+.history-title {
+  color:rgb(238, 245, 238);
+}
+
+.gridContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: auto;
+  max-width: 100%;
+  color: white;
+  font-size: 1.25rem;
+  border:none;
+  text-shadow: 2px 2px 4px black, 0 0 1em black, 0 0 0.2em black;
+}
+
+.gridContainer:hover {
+  cursor: pointer;
+  border: inset solid 1px orangered;
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  height: auto;
+  max-width: 100%;
+   border: 1px solid transparent;
+}
+.test:hover {
+-webkit-box-shadow: 0px 0px 50px 0px rgb(255, 0, 0);
+-moz-box-shadow: 0px 0px 50px 0px rgb(255, 0, 0);
+box-shadow: 0px 0px 50px 0px rgb(255, 0, 0);
+transition: .5s ease;
+
+}
+@media screen and (max-width: 480px) {
+  .gridContainer {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .gridContainer {
+    width: 280px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+#recent-search-items, a {
+  margin: 2px;
+  padding: 2px;
+  color: red;
+  text-decoration: underline;
+  font-style: italic;
+  font-size: 10pt;
+  cursor: pointer;
+}}
+
+</style></noscript>
+<script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
+<!-- END OF CSS STYLING -->
+</head>
+
+<body background="./img/fire.jpg">
+  <amp-bodymovin-animation layout="responsive" width="1000" height="100" src="https://assets3.lottiefiles.com/packages/lf20_7iux5gpv.json" >
+  </amp-bodymovin-animation>
+
+  <!-- Search Bar/Engine Section -->
+  <header amp-fx="fade-in fly-in-right" data-duration="1000ms" id="header" class="header">
+    <div class="search-container">
+      <h1 class="search-title">HOT 10! Search for the Best!</h1>
+      <form id="search-form" class="search-form">
+        <input id="search-input" class="form-input" type="text" placeholder="Search!" />
+        <button id="search" class="btn btn-info btn-block">Search!</button>
+      </form>
+    </div>
+    <!-- Search History/Local Storage Section-->
+    <div id="search-box" class="search-history">
+      <h3 class="history-title">Recent Searches:</h3>
+      <!--prev searches will be saved to local storage, see script.js-->
+      <div id="recent-search-items"></div>
+    </div>
+    <!-- need to give this button functionality -->
+    <button type="button" class="history-btn" id="clearhist">
+      Clear History
+    </button>
+  </header>
+
+  <main id="main-container" class="main-container">
+    <!----- SUB-CONTAINER WILL HOLD THE RESULTS FOR BOTH API'S: -->
+    <div amp-fx="fade-in fly-in-bottom" data-duration="1000ms" id="all-results">
+      <h2 class="subheader">Top 10 YouTube results first!</h2>
+      <!-------- LEFT SIDE- FOR FIRST API SOURCE RESULTS: YOUTUBE -------->
+      <div amp-fx="fade-in fly-in-bottom" data-duration="1000ms"  id="results-left" class="list-group">
+        <h2 class="subheader">Scroll down for the Album Covers with LastFM links, click around and have fun!!</h2>
+        <!-- id's are numbered 0-9, for the top 10 results: -->
+        <div amp-fx="fly-in-bottom" data-duration="1000ms" data-fly-in-distance="20%" id="output" class="output"></div>
+        <!--------- RIGHT SIDE- FOR SECOND API SOURCE RESULTS: LASTFM --------->
+        <div amp-fx="fly-in-bottom" data-duration="1000ms" data-fly-in-distance="20%" id="results-right" class="list-group" >
+        </amp-script>
+        </div>
       </div>
-      <!-- Search History/Local Storage Section-->
-        <div id="search-box" class="search-history">
-          <h3 class="history-title">Recent Searches:</h3>
-          <!--prev searches will be saved to local storage, see script.js-->
-          <div id="recent-search-items"></div>
-        </div>
-        <!-- need to give this button functionality -->
-        <button type="button" class="history-btn" id="clearhist">
-          Clear History
-        </button>
-    </header>
-    <!-- SEARCH RESULTS -->
-    <main id="main-container" class="main-container">
-      <!----- SUB-CONTAINER WILL HOLD THE RESULTS FOR BOTH API'S: -->
-      <div id="all-results">
-        <!-- There needs to be an empty HTML element for us to write results data to. -->
-
-        <!-------- LEFT SIDE- FOR FIRST API SOURCE RESULTS: -------->
-        <div id="results-left" class="list-group">
-          <!-- id's are numbered 0-9, for the top 10 results: -->
-          <div id="output" class="output"></div>
-          <div class="result-card result-0 api-1">
-            <!-- #1 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-1 api-1">
-            <!-- #2 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-2 api-1">
-            <!-- #3 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-3 api-1">
-            <!-- #4 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-4 api-1">
-            <!-- #5 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-5 api-1">
-            <!-- #6 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-6 api-1">
-            <!-- #7 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-7 api-1">
-            <!-- #8 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-8 api-1">
-            <!-- #9 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-9 api-1">
-            <!-- #10 result goes here with href/a tag? -->
-          </div>
-        </div>
-        <!--- closes api-1 left column results div --->
-        <!--------- RIGHT SIDE- FOR SECOND API SOURCE RESULTS: --------->
-        <div id="results-right" class="list-group">
-          <!-- id's are numbered 0-9, for the top 10 results: -->
-          <div class="result-card result-0 api-2">
-            <!-- #1 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-1 api-2">
-            <!-- #2 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-2 api-2">
-            <!-- #3 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-3 api-2">
-            <!-- #4 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-4 api-2">
-            <!-- #5 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-5 api-2">
-            <!-- #6 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-6 api-2">
-            <!-- #7 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-7 api-2">
-            <!-- #8 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-8 api-2">
-            <!-- #9 result goes here with href/a tag? -->
-          </div>
-          <div class="result-card result-9 api-2">
-            <!-- #10 result goes here with href/a tag? -->
-          </div>
-        </div>
-        <!--- closes api-2 right column results div --->
-      </div>
-      <!----- closing div tag for the entire "all-results" id div ----->
-    </main>
-    <!-- Section for recent searches/local storage -->
-
-    <script
-      src="https://code.jquery.com/jquery-3.5.0.min.js"
-      integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-      crossorigin="anonymous"
-    ></script>
-    <!-- <script
-      src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-      integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-      crossorigin="anonymous" -->
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./Develop/js/youtube.js"></script>
-    <script src="./Develop/js/lastfm.js"></script>
-    <script src="./Develop/js/script.js"></script>
-
-  </body>
+    </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./Develop/youtube.js"></script>
+  <script src="./Develop/lastfm.js"></script>
+  <!-- script.js is last so that the search history links can work and run after lastfm and youtube -->
+  <script src="./Develop/script.js"></script>
+</body>
 </html>

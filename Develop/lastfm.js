@@ -83,8 +83,10 @@ function getTopAlbums(getTopAlbumsURL) {
 */
 
       const myLinkFM = document.createElement("a");
-      const imageDiv = document.createElement("div");
-      imageDiv.setAttribute("class", "test");
+      const imageDiv = document.createElement("amp-img");
+      imageDiv.setAttribute("class", "test", "fmtest");
+      imageDiv.setAttribute("layout", "responsive");
+
       lastFMImg = data.topalbums.album[0].image[3]["#text"];
       var image = new Image();
       image.src = lastFMImg;
@@ -97,9 +99,11 @@ function getTopAlbums(getTopAlbumsURL) {
       myLinkFM.setAttribute("target", "_blank");
       console.log(data.topalbums.album[0].url);
 
+
+
       const myLinkFM2 = document.createElement("a");
       const imageDiv2 = document.createElement("div");
-      imageDiv2.setAttribute("class", "test");
+      imageDiv2.setAttribute("class", "test", "fmtest");
       lastFMImg2 = data.topalbums.album[1].image[3]["#text"];
       var image2 = new Image();
       image2.src = lastFMImg2;
@@ -114,7 +118,7 @@ function getTopAlbums(getTopAlbumsURL) {
 
       const myLinkFM3 = document.createElement("a");
       const imageDiv3 = document.createElement("div");
-      imageDiv3.setAttribute("class", "test");
+      imageDiv3.setAttribute("class", "test", "fmtest");
       lastFMImg3 = data.topalbums.album[2].image[3]["#text"];
       var image3 = new Image();
       image3.src = lastFMImg3;
@@ -129,7 +133,7 @@ function getTopAlbums(getTopAlbumsURL) {
 
       const myLinkFM4 = document.createElement("a");
       const imageDiv4 = document.createElement("div");
-      imageDiv4.setAttribute("class", "test");
+      imageDiv4.setAttribute("class", "test", "fmtest");
       lastFMImg4 = data.topalbums.album[3].image[3]["#text"];
       var image4 = new Image();
       image4.src = lastFMImg4;
@@ -144,7 +148,7 @@ function getTopAlbums(getTopAlbumsURL) {
 
       const myLinkFM5 = document.createElement("a");
       const imageDiv5 = document.createElement("div");
-      imageDiv5.setAttribute("class", "test");
+      imageDiv5.setAttribute("class", "test", "fmtest");
       lastFMImg5 = data.topalbums.album[4].image[3]["#text"];
       var image5 = new Image();
       image5.src = lastFMImg5;
@@ -159,7 +163,7 @@ function getTopAlbums(getTopAlbumsURL) {
 
       const myLinkFM6 = document.createElement("a");
       const imageDiv6 = document.createElement("div");
-      imageDiv6.setAttribute("class", "test");
+      imageDiv6.setAttribute("class", "test", "fmtest");
       lastFMImg6 = data.topalbums.album[5].image[3]["#text"];
       var image6 = new Image();
       image6.src = lastFMImg6;
@@ -174,7 +178,7 @@ function getTopAlbums(getTopAlbumsURL) {
 
       const myLinkFM7 = document.createElement("a");
       const imageDiv7 = document.createElement("div");
-      imageDiv7.setAttribute("class", "test");
+      imageDiv7.setAttribute("class", "test", "fmtest");
       lastFMImg7 = data.topalbums.album[6].image[3]["#text"];
       var image7 = new Image();
       image7.src = lastFMImg7;
@@ -189,7 +193,7 @@ function getTopAlbums(getTopAlbumsURL) {
 
       const myLinkFM8 = document.createElement("a");
       const imageDiv8 = document.createElement("div");
-      imageDiv8.setAttribute("class", "test");
+      imageDiv8.setAttribute("class", "test", "fmtest");
       lastFMImg8 = data.topalbums.album[7].image[3]["#text"];
       var image8 = new Image();
       image8.src = lastFMImg8;
@@ -204,7 +208,7 @@ function getTopAlbums(getTopAlbumsURL) {
 
       const myLinkFM9 = document.createElement("a");
       const imageDiv9 = document.createElement("div");
-      imageDiv9.setAttribute("class", "test");
+      imageDiv9.setAttribute("class", "test", "fmtest");
       lastFMImg9 = data.topalbums.album[8].image[3]["#text"];
       var image9 = new Image();
       image9.src = lastFMImg9;
@@ -219,7 +223,7 @@ function getTopAlbums(getTopAlbumsURL) {
 
       const myLinkFM10 = document.createElement("a");
       const imageDiv10 = document.createElement("div");
-      imageDiv10.setAttribute("class", "test");
+      imageDiv10.setAttribute("class", "test", "fmtest");
       lastFMImg10 = data.topalbums.album[9].image[3]["#text"];
       var image10 = new Image();
       image10.src = lastFMImg10;
@@ -245,6 +249,8 @@ function getTopAlbums(getTopAlbumsURL) {
       gridContainerLastFM.append(imageDiv9);
       gridContainerLastFM.append(imageDiv10);
       document.getElementById("results-right").innerHTML = "";
+
+
       document.getElementById("results-right").append(gridContainerLastFM);
     });
 }
@@ -290,7 +296,7 @@ form.addEventListener("submit", function (event) {
   //   getSimilar(getSimilarURL);
   getTopAlbums(getTopAlbumsURL);
 });
-
+// Calling this function for search history recall in the script.js
 function callFromHistory(event) {
   console.log(event.target.textContent);
   getTopAlbumsURL =
